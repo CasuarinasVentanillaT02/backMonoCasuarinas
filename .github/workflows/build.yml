@@ -6,8 +6,13 @@ on:
       - main  # Cambia esto si usas otra rama principal
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_URL_DB: ${{ secrets.PUBLIC_URL_DB }}
+      PUBLIC_USER: ${{ secrets.PUBLIC_USER }}
+      PUBLIC_PASSWORD: ${{ secrets.PUBLIC_PASSWORD }}
+      PUBLIC_JWT_STRING: ${{ secrets.PUBLIC_JWT_STRING}}
 
     steps:
       - name: Checkout Repository
