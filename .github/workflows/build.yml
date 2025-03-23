@@ -15,9 +15,6 @@ jobs:
       PUBLIC_JWT_STRING: ${{ secrets.PUBLIC_JWT_STRING}}
 
     steps:
-      - name: Instalar fuentes requeridas
-        run: sudo apt-get install -y fonts-dejavu fonts-liberation
-	
       - name: Checkout Repository
         uses: actions/checkout@v3
 
@@ -26,6 +23,12 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
+
+      - name: Install Fonts for JasperReports
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-dejavu fonts-liberation fontconfig
+          fc-cache -fv 
 
       - name: Build with Maven
         run: mvn clean package
