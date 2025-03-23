@@ -13,7 +13,7 @@ jobs:
       PUBLIC_USER: ${{ secrets.PUBLIC_USER }}
       PUBLIC_PASSWORD: ${{ secrets.PUBLIC_PASSWORD }}
       PUBLIC_JWT_STRING: ${{ secrets.PUBLIC_JWT_STRING}}
-
+      _JAVA_OPTIONS: "-Djava.awt.headless=true"
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
